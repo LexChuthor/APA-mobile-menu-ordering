@@ -5,6 +5,7 @@ import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 // our navbar
 import Nav from "./components/Nav";
+import Card from "./components/Card";
 
 function App() {
   return (

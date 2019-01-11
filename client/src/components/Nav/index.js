@@ -7,8 +7,8 @@ function Nav() {
         EATZ POS System
       </a>
       
-      <span className="login-btn"  role="button" tabIndex="0">
-      Employee Log In
+      <span className="login-btn"  href="/login" role="button" tabIndex="0">
+      Kitchen Log In
     </span>
     </nav>
   );

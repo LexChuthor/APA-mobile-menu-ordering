@@ -1,0 +1,74 @@
+[
+    {
+      "id": 1,
+      "name": "Luke Skywalker",
+      "image": "https://img.cinemablend.com/cb/f/7/c/1/7/1/f7c171479bf88bdcdbd7a5cadd25850b8633255bf17f77844049a08c7e5680ee.jpg",
+      "count": 0
+    },
+    {
+      "id": 2,
+      "name": "Han Solo",
+      "image": "https://upload.wikimedia.org/wikipedia/en/b/be/Han_Solo_depicted_in_promotional_image_for_Star_Wars_%281977%29.jpg",
+      "count": 0
+    },
+    {
+      "id": 3,
+      "name": "C3P0",
+      "image": "https://vignette.wikia.nocookie.net/starwars/images/3/3f/C-3PO_TLJ_Card_Trader_Award_Card.png/revision/latest/scale-to-width-down/243?cb=20180121052644",
+      "count": 0
+    },
+    {
+      "id": 4,
+      "name": "R2D2",
+      "image": "https://upload.wikimedia.org/wikipedia/en/3/39/R2-D2_Droid.png",
+      "count": 0
+    },
+    {
+      "id": 5,
+      "name": "Ben Kenobi",
+      "image": "https://imperialtalker.files.wordpress.com/2017/07/ben-kenobi-e1500599155372.jpg",
+      "count": 0
+    },
+    {
+      "id": 6,
+      "name": "Princess Leia",
+      "image": "https://upload.wikimedia.org/wikipedia/en/1/1b/Princess_Leia%27s_characteristic_hairstyle.jpg",
+      "count": 0
+    },
+    {
+      "id": 7,
+      "name": "Darth Vader",
+      "image": "https://lumiere-a.akamaihd.net/v1/images/Darth-Vader_6bda9114.jpeg?region=0%2C23%2C1400%2C785&width=960",
+      "count": 0
+    },
+    {
+      "id": 8,
+      "name": "Grand Moff Tarkin",
+      "image": "https://upload.wikimedia.org/wikipedia/en/5/5a/Grand_Moff_Tarkin.png",
+      "count": 0
+    },
+    {
+      "id": 9,
+      "name": "Chewbacca",
+      "image": "https://lumiere-a.akamaihd.net/v1/images/solo-chewbacca-main_80768fa8.jpeg?region=8%2C0%2C1543%2C868&width=960",
+      "count": 0
+    },
+    {
+      "id": 10,
+      "name": "Stormtrooper",
+      "image": "https://vignette.wikia.nocookie.net/starwars/images/c/ca/Anovos_Stormtrooper.png/revision/latest/scale-to-width-down/500?cb=20160407220950",
+      "count": 0
+    },
+    {
+      "id": 11,
+      "name": "Greedo",
+      "image": "https://vignette.wikia.nocookie.net/starwars/images/c/c6/Greedo.jpg/revision/latest/scale-to-width-down/500?cb=20180209034210",
+      "count": 0
+    },
+    {
+      "id": 12,
+      "name": "Owen Lars",
+      "image": "https://vignette.wikia.nocookie.net/starwars/images/e/eb/OwenCardTrader.png/revision/latest/scale-to-width-down/499?cb=20171108050140",
+      "count": 0
+    }
+  ]
