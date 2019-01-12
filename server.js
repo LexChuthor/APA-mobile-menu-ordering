@@ -2,7 +2,6 @@ const express = require("express");
 const app = express()
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const app = express();
 const PORT = process.env.PORT || 3001;
 const passport = require("passport")
 const session = require("express-session")
@@ -19,7 +18,6 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
-
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -62,7 +60,7 @@ models.sequelize.sync().then(function () {
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/exampleRestaurantDB");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
 
 // Start the API server
 app.listen(PORT, function() {
