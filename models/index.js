@@ -1,3 +1,5 @@
 module.exports = {
-  Book: require("./book")
+  Product: require("./product"),
+  Category: require("./category"),
+  Order: require("./order")
 };
