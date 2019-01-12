@@ -8,7 +8,6 @@ const session = require("express-session")
 var bodyParser = require('body-parser')
 var env = require('dotenv').load()
 
-
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
