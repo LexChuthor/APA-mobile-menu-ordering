@@ -62,7 +62,7 @@ models.sequelize.sync().then(function () {
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/exampleRestaurantDB");
 
 // Start the API server
 app.listen(PORT, function() {
