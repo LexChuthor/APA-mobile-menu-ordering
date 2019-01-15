@@ -36,7 +36,7 @@ app.get('signin', function (req, res) {
 
 
 //Models
-var models = require("./app/models");
+var models = require("./models");
 
 
 //Routes
