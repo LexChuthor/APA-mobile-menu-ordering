@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express()
+const app = express();
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
@@ -7,6 +7,7 @@ const passport = require("passport")
 const session = require("express-session")
 var bodyParser = require('body-parser')
 var env = require('dotenv').load()
+const mysql= require("mysql")
 
 
 // Define middleware here
@@ -38,6 +39,16 @@ app.get('signin', function (req, res) {
 //Models
 var models = require("./models");
 
+//Sync Database
+models.sequelize.sync().then(function() {
+ 
+    console.log('Nice! Database looks fine')
+ 
+}).catch(function(err) {
+ 
+    console.log(err, "Something went wrong with the Database Update!")
+ 
+});
 
 //Routes
 var authRoute = require('./app/routes/auth.js')(app, passport);
