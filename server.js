@@ -36,11 +36,7 @@ app.use(routes);
 
 
 //Models
-<<<<<<< HEAD
-// var models = require("./app/models");
-=======
-var models = require("./models");
->>>>>>> 4fab07e05d310d3b59747caa98073df1f7c6accd
+var models = require("./app/models");
 
 
 //Routes
