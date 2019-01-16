@@ -1,5 +1,4 @@
-var authController = require('../controllers/authcontroller.js');
-
+var authController = require('..../controllers/authcontroller.js')
 module.exports = function(app,passport){
 
 app.get('/', authController.signin);
