@@ -68,7 +68,8 @@ models.sequelize.sync().then(function () {
 }).catch(function (err) {
     console.log(err, "Something went wrong with the Database Update!")
 });
-
+//Routes
+var authRoute = require('./routes/api/auth')(app);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");

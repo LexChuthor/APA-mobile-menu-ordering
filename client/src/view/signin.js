@@ -1,49 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+import React, { Component } from "react";
+import DeleteBtn from "../components/DeleteBtn";
+import Jumbotron from "../components/Jumbotron";
+import API from "../utils/API";
+import { Link } from "react-router-dom";
+import { Col, Row, Container } from "../components/Grid";
+import { List, ListItem } from "../components/List";
+import Card from "../components/Card";
+import Wrapper from "../components/Wrapper";
+import cards from "./cards.json";
 
+class Books extends Component {
+  state = {
+   cards,
+   score: 0,
+   highscore: 0
+  };
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RGCA Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <style>
-        html{
-        padding:50px;
-    }
-    </style>
-</head>
+  render() {
+    return (
+      <Container fluid>
+        <Row>
+          <Col size="sm-12">
+          <form id="signup" name="signup" method="post" action="/signup">
+        <label for="email">Email Address</label>
+        <input class="text" name="email" type="email" />
+        <label for="firstname">Firstname</label>
+        <input name="firstname" type="text" />
+        <label for="lastname">Lastname</label>
+        <input name="lastname" type="text" />
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+        <input class="btn" type="submit" value="Sign Up" />
+    </form>
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
+}
 
-<body background="./assets/bill.jpg"> <!--image sourced from https://wall.alphacoders.com/big.php?i=36198-->
-    <div class="container">
-        <div class="col-sm-6 col-sm-offset-3">
-            <h2>Login</h2>
-
-      <form id="signin" name="signin" method="post" action="signin">
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input class="form-control" name="email" type="text" />
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input name="password" class="form-control" type="password" />
-        </div>
-
-        <input class="btn btn-success btn-lg" type="submit" value="Go!" />
-      </form>
-
-      <hr>
-
-      <p><a href="signup">Create An Account</a></p>
-
-    </div>
-
-  </div>
-
-
-</body>
-
-</html>
+export default Books;
