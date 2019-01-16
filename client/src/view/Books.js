@@ -1,20 +1,29 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
+// import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
+// import { List, ListItem } from "../components/List";
 import Card from "../components/Card";
 import Wrapper from "../components/Wrapper";
-import cards from "./cards.json";
+import API from "../utils/API";
 
 class Books extends Component {
   state = {
-   cards,
-   score: 0,
-   highscore: 0
+  products: [],
   };
+
+  componentDidMount(){
+    this.loadProducts();
+  };
+
+  loadProducts = () => {
+    API.getProducts()
+      .then(res =>
+        this.setState({products: res.data})
+        )
+        .catch(err => console.log(err));
+  }
 
   render() {
     return (
@@ -25,12 +34,13 @@ class Books extends Component {
               <h1>Please select menu options below</h1>
             </Jumbotron>
             <Wrapper>
-              {this.state.cards.map(card => (
+              {this.state.products.map(product => (
               <Card
-                clickCount={this.clickCount}
-                id={card.id}
-                key={card.id}
-                image={card.image}
+                name={product.name}
+                id={product._id}
+                key={product._id}
+                image={product.img}
+                description={product.description}
               />  
             ))}
           </Wrapper>
