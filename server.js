@@ -37,18 +37,18 @@ app.use(routes);
 
 
 //Models
-var models = require("./app/models");
+// var models = require("./app/models");
 
 //Sync Database
-models.sequelize.sync().then(function() {
+// models.sequelize.sync().then(function() {
  
-    console.log('Nice! Database looks fine')
+//     console.log('Nice! Database looks fine')
  
-}).catch(function(err) {
+// }).catch(function(err) {
  
-    console.log(err, "Something went wrong with the Database Update!")
+//     console.log(err, "Something went wrong with the Database Update!")
  
-});
+// });
 
 //Routes
 // var authRoute = require('./app/routes/auth.js')(app, passport);
@@ -71,7 +71,7 @@ models.sequelize.sync().then(function() {
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/restaurantExample");
 
 // Start the API server
 app.listen(PORT, function() {
