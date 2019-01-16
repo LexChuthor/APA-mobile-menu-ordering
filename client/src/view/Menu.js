@@ -11,10 +11,13 @@ import API from "../utils/API";
 class Books extends Component {
   state = {
   products: [],
+  categories: [],
+  order: []
   };
 
   componentDidMount(){
     this.loadProducts();
+    this.loadCategories();
   };
 
   loadProducts = () => {
@@ -23,6 +26,13 @@ class Books extends Component {
         this.setState({products: res.data})
         )
         .catch(err => console.log(err));
+  }
+  loadCategories = () => {
+    API.getCategories()
+    .then(res =>
+      this.setState({categories: res.data})
+      )
+      .catch(err => console.log(err));
   }
 
   render() {
