@@ -8,7 +8,7 @@ import { List, ListItem } from "../components/List";
 import Card from "../components/Card";
 import Wrapper from "../components/Wrapper";
 import cards from "./cards.json";
-
+import signin from "../components/signin/signin"
 class Books extends Component {
   state = {
    cards,
@@ -22,7 +22,7 @@ class Books extends Component {
         <Row>
           <Col size="sm-12">
           <form id="signup" name="signup" method="post" action="/signup">
-        <label for="email">Email Address</label>
+        <label f0or="email">Email Address</label>
         <input class="text" name="email" type="email" />
         <label for="firstname">Firstname</label>
         <input name="firstname" type="text" />
