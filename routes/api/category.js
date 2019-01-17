@@ -3,14 +3,13 @@ const orderController = require("../../controllers/orderController");
 
 // Matches with "/api/books"
 router.route("/")
-  .get(orderController.findAllOrder)
-  .post(orderController.createOrder);
+  .get(orderController.findAllCategory)
+  .post(orderController.createCategory);
 
 // Matches with "/api/books/:id"
 router
   .route("/:id")
-  .get(orderController.findOrderById)
-  .put(orderController.updateOrder)
-  .delete(orderController.removeOrder);
+  .get(orderController.findCategoryById)
+  .delete(orderController.removeCategory);
 
 module.exports = router;
