@@ -19,25 +19,26 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
+
 //For BodyParser
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // For Passport
-// app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })); // session secret
-// app.use(passport.initialize());
-// app.use(passport.session()); // persistent login sessions
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 
 // app.use(express.static("public"));
 
 
-// app.get('signin', function (req, res) {
-//     res.send('Welcome to Passport with Sequelize');
-// });
+app.get('signin', function (req, res) {
+    res.send('Welcome to Passport with Sequelize');
+});
 
 
 //Models
-// var models = require("./app/models");
+var models = require("./models");
 
 //Sync Database
 // models.sequelize.sync().then(function() {
@@ -51,11 +52,11 @@ app.use(routes);
 // });
 
 //Routes
-// var authRoute = require('./app/routes/auth.js')(app, passport);
+var authRoute = require('./routes/api/auth')(app, passport);
 
 
 //load passport strategies
-// require('./app/config/passport/passport.js')(passport, models.user);
+require('./config/passport/passport')(passport, models.user);
 
 // Route config -------------------------------------------/
 // require("./app/routes/htmlRoutes")(app);
