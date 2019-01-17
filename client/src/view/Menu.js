@@ -10,27 +10,35 @@ import API from "../utils/API";
 
 class Books extends Component {
   state = {
-  products: [],
-  categories: [],
-  order: []
+    products: [],
+    categories: [],
+    order: []
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.loadProducts();
     this.loadCategories();
+    this.loadOrders();
   };
 
   loadProducts = () => {
     API.getProducts()
       .then(res =>
-        this.setState({products: res.data})
-        )
-        .catch(err => console.log(err));
+        this.setState({ products: res.data })
+      )
+      .catch(err => console.log(err));
   }
   loadCategories = () => {
     API.getCategories()
-    .then(res =>
-      this.setState({categories: res.data})
+      .then(res =>
+        this.setState({ categories: res.data })
+      )
+      .catch(err => console.log(err));
+  }
+  loadOrders = () => {
+    API.getOrders()
+      .then(res =>
+        this.setState({ order: res.data })
       )
       .catch(err => console.log(err));
   }
@@ -40,29 +48,28 @@ class Books extends Component {
       <Container fluid>
         <Row>
           <Col size="md-9 sm-12">
-            <Jumbotron>
-              <h1>Please select menu options below</h1>
-            </Jumbotron>
             <Wrapper>
-              {this.state.products.map(product => (
-              <Card
-                name={product.name}
-                id={product._id}
-                key={product._id}
-                image={product.img}
-                description={product.description}
-              />  
-            ))}
-          </Wrapper>
-        );
-      }     
+              <Row><h1>Please select from the menu options below</h1></Row>
+              <Wrapper>{this.state.products.map(product => (
+                <Card
+                  name={product.name}
+                  id={product._id}
+                  key={product._id}
+                  image={product.img}
+                  description={product.description}
+                />
+              ))}
+              </Wrapper>
+            </Wrapper>
+            );
+          }
           </Col>
           <Col size="md-3 sm-12">
-          {/* Right Side Jumbotron */}
+            {/* Right Side Jumbotron */}
             <Jumbotron>
               <h1>Your Order:</h1>
             </Jumbotron>
-              <h3>No items in the shopping cart</h3>
+            <h3>No items in the shopping cart</h3>
           </Col>
         </Row>
       </Container>
