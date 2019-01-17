@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./view/Books";
+import Menu from "./view/Menu";
 import Detail from "./view/Detail";
 // import NoMatch from "./view/NoMatch";
 // our navbar
@@ -14,9 +14,9 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Books} />
-          <Route exact path="/books" component={Books} />
-          <Route exact path="/books/:id" component={Detail} />
+          <Route exact path="/" component={Menu} />
+          <Route exact path="/menu" component={Menu} />
+          <Route exact path="/menu/:id" component={Detail} />
           <Route exact path="/kitchen" component={kitchen}/>
           <Route exact path="/linkedin" component={linkedin}/>
         </Switch>
