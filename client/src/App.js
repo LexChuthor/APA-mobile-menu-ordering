@@ -8,6 +8,7 @@ import Nav from "./components/Nav";
 // import Card from "./components/Card";
 import kitchen from "./view/kitchen";
 import linkedin from "./view/linkedin";
+import  signin  from "./view/signin";
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/menu/:id" component={Detail} />
           <Route exact path="/kitchen" component={kitchen}/>
           <Route exact path="/linkedin" component={linkedin}/>
+          <Route exact path="/signin" component={signin}/>
         </Switch>
       </div>
     </Router>

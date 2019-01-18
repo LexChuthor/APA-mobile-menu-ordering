@@ -29,7 +29,7 @@ app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 
 app.get('signin', function (req, res) {
@@ -40,7 +40,7 @@ app.get('signin', function (req, res) {
 //Models
 var models = require("./models");
 
-//Sync Database
+// Sync Database
 // models.sequelize.sync().then(function() {
  
 //     console.log('Nice! Database looks fine')
