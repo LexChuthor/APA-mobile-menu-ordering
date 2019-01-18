@@ -3,7 +3,8 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import cards from "./cards.json";
-import signin from "../components/signin/signin"
+import signin from "../components/signin/signin";
+import kitchen from "./kitchen";
 class Books extends Component {
   state = {
    cards,
@@ -17,15 +18,19 @@ class Books extends Component {
         <Row>
           <Col size="sm-12">
           <form id="signup" name="signup" method="post" action="/signup">
-        <label f0or="email">Email Address</label>
+          <Row>Kitchen Sign In </Row>
+          <Row>
+        <label for="email">Username</label>
         <input class="text" name="email" type="email" />
-        <label for="firstname">Firstname</label>
-        <input name="firstname" type="text" />
-        <label for="lastname">Lastname</label>
-        <input name="lastname" type="text" />
+        </Row>
+        <Row>
         <label for="password">Password</label>
         <input name="password" type="password" />
+        </Row>
+        <Row>
         <input class="btn" type="submit" value="Sign Up" />
+        <input class="btn" href="/kitchen" type="submit" value="Sign In" />
+        </Row>
     </form>
           </Col>
         </Row>
