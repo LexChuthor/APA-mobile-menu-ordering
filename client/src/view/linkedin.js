@@ -23,9 +23,15 @@ class Books extends Component {
           <Col size="sm-12">
           {/* Right Side Jumbotron */}
             <Jumbotron>
-              <h1>Current orders:</h1>
+              <h1>Contributors:</h1>
             </Jumbotron>
-              <h3>No items in the shopping cart</h3>
+            <div class="list-group">
+               <a href="https://linkedin.com/in/alexander-esch-37b69a62" class="list-group-item list-group-item-action active">
+                 Alex Esch
+               </a>
+                <a href="https://www.linkedin.com/in/aosilvester/" class="list-group-item list-group-item-action">Alex Silvester</a>
+                <a href="https://www.linkedin.com/in/patrick-chu-90545514b/" class="list-group-item list-group-item-action">Patrick Chu</a>
+            </div>
           </Col>
         </Row>
       </Container>
