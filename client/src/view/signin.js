@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import cards from "./cards.json";
 import signin from "../components/signin/signin";
-import kitchen from "./kitchen";
+import kitchen from "../components/Kitchen";
 class Books extends Component {
   state = {
    cards,
@@ -17,7 +17,7 @@ class Books extends Component {
       <Container fluid>
         <Row>
           <Col size="sm-12">
-          <form id="signup" name="signup" method="post" action="/signup">
+          <form id="signup" name="signup"  action="/kitchen">
           <Row>Kitchen Sign In </Row>
           <Row>
         <label for="email">Username</label>
@@ -29,7 +29,10 @@ class Books extends Component {
         </Row>
         <Row>
         <input class="btn" type="submit" value="Sign Up" />
-        <input class="btn" href="/kitchen" type="submit" value="Sign In" />
+        <Link to="/kitchen" class="btn" value="Sign In" />
+
+        <input class="btn" href="/kitchen"  type="submit" value="Sign In" />
+
         </Row>
     </form>
           </Col>
