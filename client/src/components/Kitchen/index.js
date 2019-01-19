@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Col, Row, Container } from "../Grid";
+import Jumbotron from "../Jumbotron";
 
 class Books extends Component {
     state = {
-     cards,
+    //  cards,
      score: 0,
      highscore: 0
     };
