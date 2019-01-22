@@ -7,10 +7,27 @@ import { Col, Row, Container } from "../components/Grid";
 import Card from "../components/Card";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
+<<<<<<< HEAD
 import Category from "../components/Category";
 import { Mongoose } from "mongoose";
 import {List, ListItem }from "../components/List";
 import TotalBar from "../components/TotalBar";
+=======
+// Set your secret key: remember to change this to your live secret key in production
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+var stripe = require("stripe")("sk_test_5Uor8muy3s1tPcseUcv6NbC4");
+
+// // <!-- // Token is created using Checkout or Elements!
+// // Get the payment token ID submitted by the form: -->
+const token = request.body.stripeToken; // Using Express
+
+const charge = stripe.charges.create({
+  amount: 999,
+  currency: 'usd',
+  description: 'Example charge',
+  source: token,
+});
+>>>>>>> c2cf2217fd7d3d30e1e0c80384461cd26315b8f9
 
 class Books extends Component {
   state = {
@@ -113,6 +130,23 @@ class Books extends Component {
             </List>
           </Col>
         </Row>
+        <Col size="md-9"></Col>
+        <Col size="md-3">
+          <Wrapper>
+              <form action="your-server-side-code" method="POST">
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_8Z9f9E3qi0HOt62PCWknYmnu"
+                  data-amount="999"
+                  data-name="Demo Site"
+                  data-description="Example charge"
+                  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                  data-locale="auto"
+                  data-zip-code="true">
+                </script>
+              </form>
+           </Wrapper>                    
+        </Col>
       </Container>
     );
   }

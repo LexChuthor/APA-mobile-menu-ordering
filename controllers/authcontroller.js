@@ -2,13 +2,13 @@ var exports = module.exports = {}
 
 exports.signup = function(req,res){
 
-	res.render('signup'); 
+	res.render('kitchen'); 
 
 }
 
 exports.signin = function(req,res){
 
-	res.render('signin'); 
+	res.render('kitchen'); 
 
 }
 
