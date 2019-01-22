@@ -8,6 +8,9 @@ import Card from "../components/Card";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import Category from "../components/Category";
+import { Mongoose } from "mongoose";
+import {List, ListItem }from "../components/List";
+import TotalBar from "../components/TotalBar";
 
 class Books extends Component {
   state = {
@@ -45,15 +48,25 @@ class Books extends Component {
   }
 
   handleMenuClick = (id) => {
-    let addition;
-    API.getProductbyId(id)
-      .then(res =>
-        addition = res.data)
-      .catch(err => console.log(err));
     const currentOrder = this.state.order;
-    currentOrder.push(addition);
-    console.log(addition);
+    const product = this.state.products.filter(product => {
+      return product._id === id;
+    });
+    currentOrder.push(product[0]);
     this.setState({ order: currentOrder });
+  }
+
+  calculateTotal = () => {
+    const currentOrder = this.state.order;
+    let prices = [];
+    let total = 0;
+    currentOrder.map(item => {
+      prices.push(item.price);
+    });
+    prices.forEach(price =>{
+      total += price;
+    });
+    return total;
   }
 
   render() {
@@ -70,7 +83,7 @@ class Books extends Component {
                     category={category.name}
                     products={this.state.products.map(product => (
                       <Card
-                        onClick={()=> this.handleMenuClick(this.props.match.params._id)}
+                        handleMenuClick={this.handleMenuClick}
                         name={product.name}
                         id={product._id}
                         key={product._id}
@@ -87,7 +100,17 @@ class Books extends Component {
             <Jumbotron>
               <h1>Your Order:</h1>
             </Jumbotron>
-            {console.log(this.state.order)}
+            <List>
+              {this.state.order.map((item, i) => (
+                <ListItem 
+                key={i}
+                name={item.name}
+                price={item.price}>
+                </ListItem>
+              ))}
+              <TotalBar
+                total={this.calculateTotal()}></TotalBar>
+            </List>
           </Col>
         </Row>
       </Container>
