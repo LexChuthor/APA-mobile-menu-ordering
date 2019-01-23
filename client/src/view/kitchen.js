@@ -21,14 +21,47 @@ class Books extends Component {
       <Container fluid>
         <Row>
           <Col size="sm-12">
-          {/* Right Side Jumbotron */}
+          {/*  Jumbotron */}
             <Jumbotron>
               <h1>Current orders:</h1>
             </Jumbotron>
               <h3>No items in the shopping cart</h3>
           </Col>
         </Row>
-      </Container>
+        <Container fluid>
+          <Row>
+           <Col size="sm-1">
+            <form id="signup" name="signup"  action="/kitchen">
+            <Row>Add an Item </Row>
+            <Row>
+          <label for="Name">Name</label>
+          <input class="text" name="productName" type="text" />
+          </Row>
+          <Row>
+          <label for="Img">Image</label>
+          <input name="URL" type="text" />
+          </Row>
+          <Row>
+          <label for="Description">Description</label>
+          <input name="Description" type="text" />
+          </Row>
+          <Row>
+          <label for="Price">Price</label>
+          <input name="Price" type="number" />
+          </Row>
+          <Row>
+          <label for="Category">Category</label>
+          <input name="URL" type="text" />
+          </Row>
+          <Row>
+          <input class="btn" href="/kitchen"  type="submit" value="Add New Item/product" />
+
+          </Row>
+      </form>
+            </Col>
+          </Row>
+        </Container>
+        </Container>
     );
   }
 }
