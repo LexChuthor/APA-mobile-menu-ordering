@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const orderController = require("../../controllers/orderController");
 
-// Matches with "/api/books"
+// Matches with "/api/category"
 router.route("/")
   .get(orderController.findAllCategory)
   .post(orderController.createCategory);
