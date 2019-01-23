@@ -8,7 +8,7 @@ import { Col, Row, Container } from "../components/Grid";
 // import Card from "../components/Card";
 // import Wrapper from "../components/Wrapper";
 import cards from "./cards.json";
-
+import "./Menu.css";
 class Books extends Component {
   state = {
    cards,
@@ -22,35 +22,35 @@ class Books extends Component {
         <Row>
           <Col size="sm-12">
           {/*  Jumbotron */}
-            <Jumbotron>
-              <h1>Current orders:</h1>
+            <Jumbotron >
+              <h1 className="shopping-empty">Current orders:</h1>
             </Jumbotron>
-              <h3>No items in the shopping cart</h3>
+              <h3 className="shopping-empty">No items in the shopping cart</h3>
           </Col>
         </Row>
         <Container fluid>
           <Row>
            <Col size="sm-1">
             <form id="signup" name="signup"  action="/kitchen">
-            <Row>Add an Item </Row>
+            <Row ><h3 className="shopping-empty">Add an Item Below</h3></Row>
             <Row>
-          <label for="Name">Name</label>
+          <label for="Name" className="shopping-empty">Name</label>
           <input class="text" name="productName" type="text" />
           </Row>
           <Row>
-          <label for="Img">Image</label>
+          <label for="Img" className="shopping-empty">Image</label>
           <input name="URL" type="text" />
           </Row>
           <Row>
-          <label for="Description">Description</label>
+          <label for="Description" className="shopping-empty">Description</label>
           <input name="Description" type="text" />
           </Row>
           <Row>
-          <label for="Price">Price</label>
+          <label for="Price" className="shopping-empty">Price</label>
           <input name="Price" type="number" />
           </Row>
           <Row>
-          <label for="Category">Category</label>
+          <label for="Category"className="shopping-empty">Category</label>
           <input name="URL" type="text" />
           </Row>
           <Row>
