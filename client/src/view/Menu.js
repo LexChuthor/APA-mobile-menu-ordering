@@ -7,29 +7,27 @@ import { Col, Row, Container } from "../components/Grid";
 import Card from "../components/Card";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
-<<<<<<< HEAD
 import Category from "../components/Category";
 import { Mongoose } from "mongoose";
 import {List, ListItem }from "../components/List";
 import TotalBar from "../components/TotalBar";
-=======
+
 // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
-var stripe = require("stripe")("sk_test_5Uor8muy3s1tPcseUcv6NbC4");
+// var stripe = require("stripe")("sk_test_5Uor8muy3s1tPcseUcv6NbC4");
 
 // // <!-- // Token is created using Checkout or Elements!
 // // Get the payment token ID submitted by the form: -->
-const token = request.body.stripeToken; // Using Express
+// const token = request.body.stripeToken; // Using Express
 
-const charge = stripe.charges.create({
-  amount: 999,
-  currency: 'usd',
-  description: 'Example charge',
-  source: token,
-});
->>>>>>> c2cf2217fd7d3d30e1e0c80384461cd26315b8f9
+// const charge = stripe.charges.create({
+//   amount: 999,
+//   currency: 'usd',
+//   description: 'Example charge',
+//   source: token,
+// });
 
-class Books extends Component {
+class Menu extends Component {
   state = {
     products: [],
     categories: [],
@@ -37,7 +35,6 @@ class Books extends Component {
   };
 
   componentDidMount() {
-    this.loadCategories();
     this.loadProducts();
     this.loadOrders();
   };
@@ -45,7 +42,11 @@ class Books extends Component {
   loadProducts = () => {
     API.getProducts()
       .then(res =>
-        this.setState({ products: res.data })
+        API.getCategories()
+        .then(res2 => {
+          this.setState({ products: res.data , categories: res2.data})
+        })
+        .catch(err => console.log(err))
       )
       .catch(err => console.log(err));
   }
@@ -64,6 +65,22 @@ class Books extends Component {
       .catch(err => console.log(err));
   }
 
+  getACategory = (name) => {
+    let productList = [];
+    let currentCats = this.state.categories
+    let categoryObj = currentCats.filter(category => {
+     return category.name===name;
+    });
+    console.log("product ids "  + categoryObj[0].product);
+    console.log(this.state.products);
+    categoryObj[0].product.forEach(product => {
+      productList.push(this.state.products.find( item => { 
+        return item._id===product
+      }));
+    });
+    console.log(productList);
+    return productList;
+  }
   handleMenuClick = (id) => {
     const currentOrder = this.state.order;
     const product = this.state.products.filter(product => {
@@ -94,11 +111,13 @@ class Books extends Component {
             <Wrapper>
               <Row><h1>Please select from the menu options below</h1></Row>
               <Wrapper>
+                {console.log(this.state.categories)}
+                {console.log(this.state.products)}
                 {this.state.categories.map(category => (
                   <Category
                     key={category._id}
                     category={category.name}
-                    products={this.state.products.map(product => (
+                    products={this.getACategory(category.name).map(product => (
                       <Card
                         handleMenuClick={this.handleMenuClick}
                         name={product.name}
@@ -152,4 +171,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Menu;
