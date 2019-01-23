@@ -4,7 +4,7 @@ import Menu from "./view/Menu";
 import Detail from "./view/Detail";
 // import NoMatch from "./view/NoMatch";
 // our navbar
-import Nav from "./components/Nav";
+import Nav from "./components/Nav/Index";
 // import Card from "./components/Card";
 import kitchen from "./view/kitchen";
 import linkedin from "./view/linkedin";
