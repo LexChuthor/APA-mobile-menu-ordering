@@ -11,7 +11,7 @@ import Category from "../components/Category";
 import {List, ListItem }from "../components/List";
 import TotalBar from "../components/TotalBar";
 
-import "./Menu"
+import "./Menu.css"
 // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 // var stripe = require("stripe")("sk_test_5Uor8muy3s1tPcseUcv6NbC4");
