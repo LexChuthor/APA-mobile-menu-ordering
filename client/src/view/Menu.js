@@ -7,11 +7,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Card from "../components/Card";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
-import Category from "../components/Category";
-import {List, ListItem }from "../components/List";
-import TotalBar from "../components/TotalBar";
-
-import "./Menu.css"
+import "./Menu.css";
 // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 // var stripe = require("stripe")("sk_test_5Uor8muy3s1tPcseUcv6NbC4");
@@ -27,7 +23,7 @@ import "./Menu.css"
 //   source: token,
 // });
 
-class Menu extends Component {
+class Books extends Component {
   state = {
     products: [],
     categories: [],
@@ -36,17 +32,14 @@ class Menu extends Component {
 
   componentDidMount() {
     this.loadProducts();
+    this.loadCategories();
     this.loadOrders();
   };
 
   loadProducts = () => {
     API.getProducts()
       .then(res =>
-        API.getCategories()
-        .then(res2 => {
-          this.setState({ products: res.data , categories: res2.data})
-        })
-        .catch(err => console.log(err))
+        this.setState({ products: res.data })
       )
       .catch(err => console.log(err));
   }
@@ -65,92 +58,34 @@ class Menu extends Component {
       .catch(err => console.log(err));
   }
 
-  getACategory = (name) => {
-    let productList = [];
-    let currentCats = this.state.categories
-    let categoryObj = currentCats.filter(category => {
-     return category.name===name;
-    });
-    console.log("product ids "  + categoryObj[0].product);
-    console.log(this.state.products);
-    categoryObj[0].product.forEach(product => {
-      productList.push(this.state.products.find( item => { 
-        return item._id===product
-      }));
-    });
-    console.log(productList);
-    return productList;
-  }
-  handleMenuClick = (id) => {
-    const currentOrder = this.state.order;
-    const product = this.state.products.filter(product => {
-      return product._id === id;
-    });
-    currentOrder.push(product[0]);
-    this.setState({ order: currentOrder });
-  }
-
-  calculateTotal = () => {
-    const currentOrder = this.state.order;
-    let prices = [];
-    let total = 0;
-    currentOrder.map(item => {
-      prices.push(item.price);
-    });
-    prices.forEach(price =>{
-      total += price;
-    });
-    return total;
-  }
-
   render() {
     return (
-      <Container fluid>
-        <Row>
+      <Container >
+        <Row >
           <Col size="md-9 sm-12">
-            <Wrapper>
-              <Row><h1>Please select from the menu options below</h1></Row>
-              <Wrapper>
-                {console.log(this.state.categories)}
-                {console.log(this.state.products)}
-                {this.state.categories.map(category => (
-                  <Category
-                    key={category._id}
-                    category={category.name}
-                    products={this.getACategory(category.name).map(product => (
-                      <Card
-                        handleMenuClick={this.handleMenuClick}
-                        name={product.name}
-                        id={product._id}
-                        key={product._id}
-                        image={product.img}
-                        description={product.description}
-                      />
-                    ))}></Category>
-                ))}
+            <Wrapper className="wood">
+              <Row><h1 className="shopping-empty" >Please select from the menu options below</h1></Row>
+              <Wrapper>{this.state.products.map(product => (
+                <Card
+                  name={product.name}
+                  id={product._id}
+                  key={product._id}
+                  image={product.img}
+                  description={product.description}
+                />
+              ))}
               </Wrapper>
             </Wrapper>
           </Col>
           <Col size="md-3 sm-12">
             {/* Right Side Jumbotron */}
             <Jumbotron>
-              <h1>Your Order:</h1>
+              <h1 className="shopping-empty">Your Order:</h1>
             </Jumbotron>
-            <List>
-              {this.state.order.map((item, i) => (
-                <ListItem 
-                key={i}
-                name={item.name}
-                price={item.price}>
-                </ListItem>
-              ))}
-              <TotalBar
-                total={this.calculateTotal()}></TotalBar>
-            </List>
+            <h3 className="shopping-empty">No items in the shopping cart</h3>
           </Col>
         </Row>
-        <Col size="md-9"></Col>
-        <Col size="md-3">
+        <Col size="md-9">
           <Wrapper>
               <form action="your-server-side-code" method="POST">
                 <script
@@ -171,4 +106,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default Books;
