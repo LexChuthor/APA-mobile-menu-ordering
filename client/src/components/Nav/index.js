@@ -24,7 +24,6 @@ function Nav() {
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Alex Esch</a>
             <a class="dropdown-item" href="https://www.linkedin.com/in/patrick-chu-90545514b">Patrick Chu</a>
-            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="https://www.linkedin.com/in/aosilvester/">Alex Silvester</a>
           </div>
         </li>
