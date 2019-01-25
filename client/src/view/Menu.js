@@ -28,7 +28,7 @@ import "./Menu.css"
 //   source: token,
 // });
 
-class Menu extends Component {
+class Books extends Component {
   state = {
     products: [],
     categories: [],
@@ -115,10 +115,10 @@ class Menu extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
+      <Container >
+        <Row >
           <Col size="md-9 sm-12">
-            <Wrapper>
+            <Wrapper className="wood">
               <Row><h1>Please select from the menu options below</h1></Row>
               <Wrapper>
                 {this.state.categories.map(category => (
@@ -142,7 +142,7 @@ class Menu extends Component {
           <Col size="md-3 sm-12">
             {/* Right Side Jumbotron */}
             <Jumbotron>
-              <h1>Your Order:</h1>
+              <h1 className="shopping-empty">Your Order:</h1>
             </Jumbotron>
             <List>
               {this.state.order.map((item, i) => (
@@ -158,8 +158,7 @@ class Menu extends Component {
             </List>
           </Col>
         </Row>
-        <Col size="md-9"></Col>
-        <Col size="md-3">
+        <Col size="md-9">
           <Wrapper>
             <form action="your-server-side-code" method="POST">
               <script
@@ -180,4 +179,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default Books;
