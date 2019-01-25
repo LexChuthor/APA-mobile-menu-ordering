@@ -5,10 +5,10 @@ const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const passport = require("passport")
 const session = require("express-session")
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 var env = require('dotenv').load()
 const mysql= require("mysql")
-
+const cors = require('cors');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));

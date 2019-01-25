@@ -92,7 +92,7 @@ class Kitchen extends Component {
         </Row>
         <Container fluid>
           <Row>
-            <Col size="sm-1">
+            <Col size="sm-2">
               <form id="signup" name="signup" action="/kitchen">
                 <Row>Add an Item </Row>
                 <Row>
@@ -124,6 +124,8 @@ class Kitchen extends Component {
                 </Row>
                 <Row>
                   <label for="Price">Price</label>
+                </Row> 
+                <Row> 
                   <Input 
                   name="price"
                   value={this.state.price}
