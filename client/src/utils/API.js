@@ -29,6 +29,9 @@ export default {
   saveCategory: function(categoryData){
     return axios.post("/api/category", categoryData);
   },
+  updateCategoryWithProduct: function(name, categoryData){
+    return axios.put("api/category/" + name, categoryData);
+  },
   getOrders: function() {
     return axios.get("/api/order");
   },
@@ -39,6 +42,9 @@ export default {
   // Deletes the book with the given id
   deleteOrder: function(id) {
     return axios.delete("/api/order/" + id);
+  },
+  updateOrder: function(id, orderData){
+    return axios.put("/api/order/" + id, orderData);
   },
   // Saves a book to the database
   saveOrder: function(orderData) {

@@ -12,4 +12,7 @@ router
   .get(orderController.findCategoryById)
   .delete(orderController.removeCategory);
 
+router
+  .route("/:name")
+  .put(orderController.updateCategoryWithProduct);
 module.exports = router;

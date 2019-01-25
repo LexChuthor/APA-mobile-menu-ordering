@@ -1,69 +1,157 @@
 import React, { Component } from "react";
 // import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
-// import API from "../utils/API";
-// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-// import Card from "../components/Card";
-// import Wrapper from "../components/Wrapper";
-import cards from "./cards.json";
-import "./Menu.css";
-class Books extends Component {
+import Wrapper from "../components/Wrapper";
+import OrderCard from "../components/OrderCard";
+import API from "../utils/API";
+import { Input, TextArea, FormBtn } from "../components/Form";
+import OrderCompleteBtn from "../components/OrderCompleteBtn";
+
+class Kitchen extends Component {
   state = {
-   cards,
-   score: 0,
-   highscore: 0
+    products: [],
+    orders: [],
+    name: "",
+    img: "",
+    description: "",
+    price: 0,
+    category: "",
   };
 
+  componentDidMount = () => {
+    this.loadOrders();
+  }
+  loadOrders = () => {
+    API.getOrders()
+      .then(res =>
+        API.getProducts()
+          .then(res2 => {
+            this.setState({ orders: res.data, products: res2.data })
+          })
+      )
+      .catch(err => console.log(err));
+  }
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+  handleFormSubmit = event => {
+    event.preventDefault();
+    let category = this.state.category;
+    API.saveProduct({
+      name: this.state.name,
+      img: this.state.img,
+      description: this.state.description,
+      price: this.state.price,
+    })
+      .then(function (res) {
+        console.log(res);
+        API.updateCategoryWithProduct(category, res.data)
+      })
+      .then(res => this.loadOrders())
+      .catch(function (err) {
+        console.log(err)
+      })
+  }
+  markOrderComplete = id => {
+    API.updateOrder(id, {completed: true})
+      .then(res => this.loadOrders())
+      .catch(err => console.log(err));
+  };
+  translateOrder = (code, products) => {
+    const orderItem = products.find(product => {
+      return product._id === code;
+    });
+    return orderItem.name;
+  }
   render() {
     return (
       <Container fluid>
         <Row>
           <Col size="sm-12">
-          {/*  Jumbotron */}
-            <Jumbotron >
-              <h1 className="shopping-empty">Current orders:</h1>
-            </Jumbotron>
-              <h3 className="shopping-empty">No items in the shopping cart</h3>
+            {/*  Jumbotron */}
+            <Wrapper>
+              {this.state.orders.map((order, i) => (
+                order.completed===false &&
+                <OrderCard
+                  key={i}
+                  id={order._id}
+                  products={this.state.products}
+                  translateOrder={this.translateOrder}
+                  orderName={order.orderName}
+                  items={order.product}
+                >
+                <OrderCompleteBtn onClick={() => this.markOrderComplete(order._id)} />
+                </OrderCard>
+              ))}
+            </Wrapper>
           </Col>
         </Row>
         <Container fluid>
           <Row>
-           <Col size="sm-1">
-            <form id="signup" name="signup"  action="/kitchen">
-            <Row ><h3 className="shopping-empty">Add an Item Below</h3></Row>
-            <Row>
-          <label for="Name" className="shopping-empty">Name</label>
-          <input class="text" name="productName" type="text" />
-          </Row>
-          <Row>
-          <label for="Img" className="shopping-empty">Image</label>
-          <input name="URL" type="text" />
-          </Row>
-          <Row>
-          <label for="Description" className="shopping-empty">Description</label>
-          <input name="Description" type="text" />
-          </Row>
-          <Row>
-          <label for="Price" className="shopping-empty">Price</label>
-          <input name="Price" type="number" />
-          </Row>
-          <Row>
-          <label for="Category"className="shopping-empty">Category</label>
-          <input name="URL" type="text" />
-          </Row>
-          <Row>
-          <input class="btn" href="/kitchen"  type="submit" value="Add New Item/product" />
+            <Col size="sm-1">
+              <form id="signup" name="signup" action="/kitchen">
+                <Row>Add an Item </Row>
+                <Row>
+                  <label for="Name">Name</label>
+                  <Input 
+                  value={this.state.name}
+                  onChange={this.handleInputChange}
+                  name="name"
+                  placeholder="New Product" 
+                  />
+                </Row>
+                <Row>
+                  <label for="Img">Image</label>
+                  <Input 
+                  name="img" 
+                  onChange={this.handleInputChange}
+                  value={this.state.img}
+                  placeHolder="Enter URL" 
+                  />
+                </Row>
+                <Row>
+                  <label for="Description">Description</label>
+                  <TextArea 
+                  name="description"
+                  value={this.state.description}
+                  onChange={this.handleInputChange}
+                  placeHolder="Enter Description" 
+                  />
+                </Row>
+                <Row>
+                  <label for="Price">Price</label>
+                  <Input 
+                  name="price"
+                  value={this.state.price}
+                  onChange={this.handleInputChange}
+                  type="double" 
+                   />
+                </Row>
+                <Row>
+                  <label for="Category">Category</label>
+                  <Input 
+                  name="category"
+                  value={this.state.category}
+                  onChange={this.handleInputChange}
+                  placeHolder="Enter existing or new category"
+                  />
+                </Row>
+                <Row>
+                  <FormBtn
+                  onClick={this.handleFormSubmit} />
 
-          </Row>
-      </form>
+                </Row>
+              </form>
             </Col>
           </Row>
         </Container>
-        </Container>
+      </Container>
     );
   }
 }
 
-export default Books;
+export default Kitchen;
