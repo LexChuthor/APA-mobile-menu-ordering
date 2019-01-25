@@ -8,8 +8,9 @@ import Card from "../components/Card";
 import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import Category from "../components/Category";
-import {List, ListItem }from "../components/List";
+import { List, ListItem } from "../components/List";
 import TotalBar from "../components/TotalBar";
+import SubmitOrderBtn from "../components/SubmitOrderBtn";
 
 import "./Menu.css"
 // Set your secret key: remember to change this to your live secret key in production
@@ -31,22 +32,22 @@ class Menu extends Component {
   state = {
     products: [],
     categories: [],
-    order: []
+    order: [],
+    orderName: "default"
   };
 
   componentDidMount() {
     this.loadProducts();
-    this.loadOrders();
   };
 
   loadProducts = () => {
     API.getProducts()
       .then(res =>
         API.getCategories()
-        .then(res2 => {
-          this.setState({ products: res.data , categories: res2.data})
-        })
-        .catch(err => console.log(err))
+          .then(res2 => {
+            this.setState({ products: res.data, categories: res2.data })
+          })
+          .catch(err => console.log(err))
       )
       .catch(err => console.log(err));
   }
@@ -64,21 +65,30 @@ class Menu extends Component {
       )
       .catch(err => console.log(err));
   }
-
+  submitOrder = event => {
+    event.preventDefault();
+    let total = this.calculateTotal();
+    if (this.state.order.length > 0) {
+      API.saveOrder({
+        name: this.state.orderName,
+        product: this.state.order,
+        price: total
+      })
+        .then(res => console.log(this.state.order))
+        .catch(err => console.log(err));
+    }
+  };
   getACategory = (name) => {
     let productList = [];
     let currentCats = this.state.categories
     let categoryObj = currentCats.filter(category => {
-     return category.name===name;
+      return category.name === name;
     });
-    console.log("product ids "  + categoryObj[0].product);
-    console.log(this.state.products);
     categoryObj[0].product.forEach(product => {
-      productList.push(this.state.products.find( item => { 
-        return item._id===product
+      productList.push(this.state.products.find(item => {
+        return item._id === product
       }));
     });
-    console.log(productList);
     return productList;
   }
   handleMenuClick = (id) => {
@@ -97,7 +107,7 @@ class Menu extends Component {
     currentOrder.map(item => {
       prices.push(item.price);
     });
-    prices.forEach(price =>{
+    prices.forEach(price => {
       total += price;
     });
     return total;
@@ -111,8 +121,6 @@ class Menu extends Component {
             <Wrapper>
               <Row><h1>Please select from the menu options below</h1></Row>
               <Wrapper>
-                {console.log(this.state.categories)}
-                {console.log(this.state.products)}
                 {this.state.categories.map(category => (
                   <Category
                     key={category._id}
@@ -138,33 +146,34 @@ class Menu extends Component {
             </Jumbotron>
             <List>
               {this.state.order.map((item, i) => (
-                <ListItem 
-                key={i}
-                name={item.name}
-                price={item.price}>
+                <ListItem
+                  key={i}
+                  name={item.name}
+                  price={item.price}>
                 </ListItem>
               ))}
               <TotalBar
                 total={this.calculateTotal()}></TotalBar>
+              <SubmitOrderBtn handleClick={this.submitOrder} />
             </List>
           </Col>
         </Row>
         <Col size="md-9"></Col>
         <Col size="md-3">
           <Wrapper>
-              <form action="your-server-side-code" method="POST">
-                <script
-                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key="pk_test_8Z9f9E3qi0HOt62PCWknYmnu"
-                  data-amount="999"
-                  data-name="Demo Site"
-                  data-description="Example charge"
-                  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                  data-locale="auto"
-                  data-zip-code="true">
-                </script>
-              </form>
-           </Wrapper>                    
+            <form action="your-server-side-code" method="POST">
+              <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_8Z9f9E3qi0HOt62PCWknYmnu"
+                data-amount="999"
+                data-name="Demo Site"
+                data-description="Example charge"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="auto"
+                data-zip-code="true">
+              </script>
+            </form>
+          </Wrapper>
         </Col>
       </Container>
     );
