@@ -75,6 +75,7 @@ class Kitchen extends Component {
             {/*  Jumbotron */}
             <Wrapper>
               {this.state.orders.map((order, i) => (
+                order.completed===false &&
                 <OrderCard
                   key={i}
                   id={order._id}
