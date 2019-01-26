@@ -24,16 +24,6 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 
-app.get('signin', function (req, res) {
-    res.send('Welcome to Passport with Sequelize');
-});
-
-
-//Models
-var models = require("./models");
-
-
-
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/restaurantExample");
 
