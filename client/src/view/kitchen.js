@@ -7,6 +7,7 @@ import OrderCard from "../components/OrderCard";
 import API from "../utils/API";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import OrderCompleteBtn from "../components/OrderCompleteBtn";
+// import QRCode from "react-qr-code";
 
 class Kitchen extends Component {
   state = {
@@ -57,7 +58,7 @@ class Kitchen extends Component {
       })
   }
   markOrderComplete = id => {
-    API.updateOrder(id, {completed: true})
+    API.updateOrder(id, { completed: true })
       .then(res => this.loadOrders())
       .catch(err => console.log(err));
   };
@@ -76,7 +77,7 @@ class Kitchen extends Component {
             <Wrapper>
               {console.log(this.state.orders)}
               {this.state.orders.map((order, i) => (
-                order.completed===false &&
+                order.completed === false &&
                 <OrderCard
                   key={i}
                   id={order._id}
@@ -85,7 +86,7 @@ class Kitchen extends Component {
                   orderName={order.name}
                   items={order.product}
                 >
-                <OrderCompleteBtn onClick={() => this.markOrderComplete(order._id)} />
+                  <OrderCompleteBtn onClick={() => this.markOrderComplete(order._id)} />
                 </OrderCard>
               ))}
             </Wrapper>
@@ -93,60 +94,73 @@ class Kitchen extends Component {
         </Row>
         <Container fluid>
           <Row>
-            <Col size="sm-1">
+            <Col size="sm-6">
               <form id="signup" name="signup" action="/kitchen">
                 <Row>Add an Item </Row>
                 <Row>
-                  <label for="Name">Name</label>
-                  <Input 
-                  value={this.state.name}
-                  onChange={this.handleInputChange}
-                  name="name"
-                  placeholder="New Product" 
+                  <label htmlFor="Name">Name</label>
+                </Row>
+                <Row>
+                  <Input
+                    value={this.state.name}
+                    onChange={this.handleInputChange}
+                    name="name"
+                    placeholder="New Product"
                   />
                 </Row>
                 <Row>
-                  <label for="Img">Image</label>
-                  <Input 
-                  name="img" 
-                  onChange={this.handleInputChange}
-                  value={this.state.img}
-                  placeHolder="Enter URL" 
+                  <label htmlFor="Img">Image</label>
+                </Row>
+                <Row>
+                  <Input
+                    name="img"
+                    onChange={this.handleInputChange}
+                    value={this.state.img}
+                    placeholder="Enter URL"
                   />
                 </Row>
                 <Row>
-                  <label for="Description">Description</label>
-                  <TextArea 
-                  name="description"
-                  value={this.state.description}
-                  onChange={this.handleInputChange}
-                  placeHolder="Enter Description" 
+                  <label htmlFor="Description">Description</label>
+                </Row>
+                <Row>
+                  <TextArea
+                    name="description"
+                    value={this.state.description}
+                    onChange={this.handleInputChange}
+                    placeholder="Enter Description"
                   />
                 </Row>
                 <Row>
-                  <label for="Price">Price</label>
-                  <Input 
-                  name="price"
-                  value={this.state.price}
-                  onChange={this.handleInputChange}
-                  type="double" 
-                   />
+                  <label htmlFor="Price">Price</label>
                 </Row>
                 <Row>
-                  <label for="Category">Category</label>
-                  <Input 
-                  name="category"
-                  value={this.state.category}
-                  onChange={this.handleInputChange}
-                  placeHolder="Enter existing or new category"
+                  <Input
+                    name="price"
+                    value={this.state.price}
+                    onChange={this.handleInputChange}
+                    type="double"
+                  />
+                </Row>
+                <Row>
+                  <label htmlFor="Category">Category</label>
+                </Row>
+                <Row>
+                  <Input
+                    name="category"
+                    value={this.state.category}
+                    onChange={this.handleInputChange}
+                    placeholder="Enter existing or new category"
                   />
                 </Row>
                 <Row>
                   <FormBtn
-                  onClick={this.handleFormSubmit} />
+                    onClick={this.handleFormSubmit} />
 
                 </Row>
               </form>
+            </Col>
+            <Col size="sm-6">
+            {/* <QRCode value="www.google.com"/> */}
             </Col>
           </Row>
         </Container>
