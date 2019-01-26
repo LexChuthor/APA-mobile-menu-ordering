@@ -39,7 +39,7 @@ class Login extends Component {
         console.log("LOGIN: res = " + JSON.stringify(res));
         if (res.data.success) {
           console.log("in success handle");
-          window.location.assign("/login");
+          window.location.assign('/kitchen');
           // this.setState({ loginStatus: true, });
           // this.props.handleLoginStatus(this.state.loginStatus, this.state.loginEmail);
           // this.setState({ isLoggedIn: true, });
