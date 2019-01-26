@@ -9,7 +9,6 @@ var bodyParser = require('body-parser')
 var env = require('dotenv').load()
 const mysql= require("mysql")
 
-
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
