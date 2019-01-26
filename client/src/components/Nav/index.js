@@ -1,9 +1,18 @@
-import React from "react";
+import React, { Component } from 'react';
 
 
-function Nav() {
+class NavBar extends Component {
+  state = { isLoggedIn: false };
+
+  handleExit = event => {
+    event.preventDefault();
+    console.log("Back to Root");
+    window.location.assign('/');
+  };
+
+  render(){
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-light">
     <a className="navbar-brand" href="/">Mexicana Food App</a>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
@@ -25,19 +34,24 @@ function Nav() {
             Linkedins
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            {/* <a className="dropdown-item" href="#">Alex Esch</a> */}
+            <a className="dropdown-item" href="https://linkedin.com/in/alexander-esch-37b69a62">Alex Esch</a>
             <a className="dropdown-item" href="https://www.linkedin.com/in/patrick-chu-90545514b">Patrick Chu</a>
             <a className="dropdown-item" href="https://www.linkedin.com/in/aosilvester/">Alex Silvester</a>
           </div>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a className="nav-link disabled" href="/">Hello Guest</a>
+        </li> */}
+        <li class="nav-item">
+          <a class="nav-link" href="/" onClick={this.handleExit} >Kitchen Log Out</a>
         </li>
       </ul>
     </div>
   </nav>
   );
 }
+}
 
 
-export default Nav;
+
+export default NavBar;
