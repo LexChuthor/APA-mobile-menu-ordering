@@ -13,27 +13,14 @@ import TotalBar from "../components/TotalBar";
 import SubmitOrderBtn from "../components/SubmitOrderBtn";
 
 import "./Menu.css"
-// Set your secret key: remember to change this to your live secret key in production
-// See your keys here: https://dashboard.stripe.com/account/apikeys
-// var stripe = require("stripe")("sk_test_5Uor8muy3s1tPcseUcv6NbC4");
-
-// // <!-- // Token is created using Checkout or Elements!
-// // Get the payment token ID submitted by the form: -->
-// const token = request.body.stripeToken; // Using Express
-
-// const charge = stripe.charges.create({
-//   amount: 999,
-//   currency: 'usd',
-//   description: 'Example charge',
-//   source: token,
-// });
+import Stretchmini from "../components/Stretchmini/Stretchmini";
 
 class Books extends Component {
   state = {
     products: [],
     categories: [],
     order: [],
-    orderName: "default"
+    orderName: this.props.match.params.id
   };
 
   componentDidMount() {
@@ -105,7 +92,7 @@ class Books extends Component {
     let prices = [];
     let total = 0;
     currentOrder.map(item => {
-      prices.push(item.price);
+       return prices.push(item.price);
     });
     prices.forEach(price => {
       total += price;
@@ -167,13 +154,11 @@ class Books extends Component {
                 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></img>
             </form>
 
-
-
-
-
           </Wrapper>
         </Col>
+        <Stretchmini/>
       </Container>
+
     );
   }
 }

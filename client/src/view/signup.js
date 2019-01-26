@@ -3,12 +3,12 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import cards from "./cards.json";
-import signin from "../components/signin/signin";
-import kitchen from "../components/Kitchen";
+import Stretch from "../components/Stretch/Stretch";
+
 
 class Login extends Component {
   state = {
-    isLoggedIn: false,
+    isLoggedIn: false
   };
 
   handleInputChange = event => {
@@ -46,7 +46,7 @@ class Login extends Component {
           // this.setState({ loginMsg: res.data.message });
         } else {
           console.log("in failure handle");
-          window.location.assign('/signup');
+          window.location.assign("/signup");
           // this.setState({ loginStatus: false });
           // this.props.handleLoginStatus(this.state.loginStatus, this.state.loginEmail);
           // this.setState({ isLoggedIn: false });
@@ -57,14 +57,12 @@ class Login extends Component {
       .catch(err => console.log(err));
   };
 
-
   render() {
-    
-         return (
-        <Container fluid>
-          <Row>
-            <Col size="sm-12">
-              {/* <form id="signup" name="signup"  action="/kitchen">
+    return (
+      <Container fluid>
+        <Row>
+          <Col size="sm-12">
+            {/* <form id="signup" name="signup"  action="/kitchen">
                 <Row>Kitchen Sign In </Row>
                 <Row>
                   <label for="email">Username</label>
@@ -80,40 +78,77 @@ class Login extends Component {
                   <input class="btn" href="/kitchen"  type="submit" value="Sign In" />
                 </Row>
               </form> */}
-              <div id="loginForm" className="loginForm">
-              <form id="signup" name="signup"  action="/kitchen">
-                  <Row> <h1>Kitchen Sign Up</h1> </Row>
-                  
-                  <Row>
-                    <label className="firstName" for ="login_fname">First Name</label>
-                    <input type="text" name="fname" id="login_fname" placeholder="Enter your first name" onChange={this.handleInputChange}></input>
-                  </Row>
-                  <Row>
-                    <label className="lastName" for="login_lname">Last Name</label>
-                    <input type="text" name="lname" id="login_lname" placeholder="Enter your last name" onChange={this.handleInputChange}></input>
-                  </Row>
-                  <Row>
-                    <label className="email" for="login_email">Email</label>
-                    <input type="text" name="email" id="login_email" placeholder="Enter your email" onChange={this.handleInputChange}></input>
-                  </Row>
-                  <Row>
-                    <label className="password" for="login_Password">Password</label>
-                    <input type="password" name="password" id="login_Password" placeholder="Enter a password" onChange={this.handleInputChange}></input>
-                  </Row>
-                  <div id="loginSubmitButton" className="loginSubmitButton">
-                    <button className="submit_Button" onClick={this.handleFormSubmitSignUp}>Submit</button>
-                  </div>
+            <div id="loginForm" className="loginForm">
+              <form id="signup" name="signup" action="/kitchen">
+                <Row>
+                  {" "}
+                  <h1>Kitchen Sign Up</h1>{" "}
+                </Row>
 
+                <Row>
+                  <label className="firstName" for="login_fname">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    name="fname"
+                    id="login_fname"
+                    placeholder="Enter your first name"
+                    onChange={this.handleInputChange}
+                  />
+                </Row>
+                <Row>
+                  <label className="lastName" for="login_lname">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    name="lname"
+                    id="login_lname"
+                    placeholder="Enter your last name"
+                    onChange={this.handleInputChange}
+                  />
+                </Row>
+                <Row>
+                  <label className="email" for="login_email">
+                    Email
+                  </label>
+                  <input
+                    type="text"
+                    name="email"
+                    id="login_email"
+                    placeholder="Enter your email"
+                    onChange={this.handleInputChange}
+                  />
+                </Row>
+                <Row>
+                  <label className="password" for="login_Password">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="login_Password"
+                    placeholder="Enter a password"
+                    onChange={this.handleInputChange}
+                  />
+                </Row>
+                <div id="loginSubmitButton" className="loginSubmitButton">
+                  <button
+                    className="submit_Button"
+                    onClick={this.handleFormSubmitSignUp}
+                  >
+                    Submit
+                  </button>
+                </div>
               </form>
-              </div>
-
-
-
-            </Col>
-          </Row>
-        </Container>
-      );
-    }
+            </div>
+            <Stretch />
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
 }
 
 export default Login;

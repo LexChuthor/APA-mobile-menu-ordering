@@ -9,7 +9,6 @@ var bodyParser = require('body-parser')
 // var env = require('dotenv').load()
 // const mysql= require("mysql")
 
-
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -72,7 +71,7 @@ require('./config/passport/passport')(passport, models.user);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/APA_Restaurant");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/restaurantExample");
 
 // Start the API server
 app.listen(PORT, function() {
