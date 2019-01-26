@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3001;
 const passport = require("passport")
 const session = require("express-session")
 var bodyParser = require('body-parser')
-var env = require('dotenv').load()
-const mysql= require("mysql")
+// var env = require('dotenv').load()
+// const mysql= require("mysql")
 
 
 // Define middleware here
@@ -72,7 +72,7 @@ require('./config/passport/passport')(passport, models.user);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/restaurantExample");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/APA_Restaurant");
 
 // Start the API server
 app.listen(PORT, function() {
