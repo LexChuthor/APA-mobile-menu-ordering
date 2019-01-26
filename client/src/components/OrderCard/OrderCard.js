@@ -4,7 +4,7 @@ import "./OrderCard.css";
 
 const OrderCard = props => (
     <div className="card">
-        <span>{props.orderName}</span>
+        <strong>{props.orderName}</strong>
         <div className="items-ordered">
             <ul>
                 {props.items.map((item, i) => (

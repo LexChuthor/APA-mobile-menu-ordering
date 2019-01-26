@@ -121,8 +121,6 @@ class Books extends Component {
             <Wrapper className="wood">
               <Row><h1>Please select from the menu options below</h1></Row>
               <Wrapper>
-                {console.log(this.state.orderName)}
-                {console.log(this.props)}
                 {this.state.categories.map(category => (
                   <Category
                     key={category._id}
@@ -161,20 +159,6 @@ class Books extends Component {
           </Col>
         </Row>
         <Col size="md-9">
-          <Wrapper>
-            <form action="your-server-side-code" method="POST">
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_8Z9f9E3qi0HOt62PCWknYmnu"
-                data-amount="999"
-                data-name="Demo Site"
-                data-description="Example charge"
-                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                data-locale="auto"
-                data-zip-code="true">
-              </script>
-            </form>
-          </Wrapper>
         </Col>
       </Container>
     );
