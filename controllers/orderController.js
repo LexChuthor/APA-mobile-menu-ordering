@@ -85,6 +85,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  updateCategoryWithProduct: function(req, res) {
+    db.Category
+      .findOneAndUpdate({ name: req.params.name }, { $push: {product: req.body._id}}, {new: true, upsert: true},  )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   removeOrder: function(req, res) {
     db.Order
       .findById({ _id: req.params.id })

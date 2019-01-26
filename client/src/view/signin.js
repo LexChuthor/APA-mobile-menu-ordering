@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import Card from "../components/Card";
-import Wrapper from "../components/Wrapper";
 import cards from "./cards.json";
-import signin from "../components/signin/signin"
+import signin from "../components/signin/signin";
+import kitchen from "../components/Kitchen";
 class Books extends Component {
   state = {
    cards,
@@ -21,16 +17,23 @@ class Books extends Component {
       <Container fluid>
         <Row>
           <Col size="sm-12">
-          <form id="signup" name="signup" method="post" action="/signup">
-        <label f0or="email">Email Address</label>
+          <form id="signup" name="signup"  action="/kitchen">
+          <Row>Kitchen Sign In </Row>
+          <Row>
+        <label for="email">Username</label>
         <input class="text" name="email" type="email" />
-        <label for="firstname">Firstname</label>
-        <input name="firstname" type="text" />
-        <label for="lastname">Lastname</label>
-        <input name="lastname" type="text" />
+        </Row>
+        <Row>
         <label for="password">Password</label>
         <input name="password" type="password" />
+        </Row>
+        <Row>
         <input class="btn" type="submit" value="Sign Up" />
+        <Link to="/kitchen" class="btn" value="Sign In" />
+
+        <input class="btn" href="/kitchen"  type="submit" value="Sign In" />
+
+        </Row>
     </form>
           </Col>
         </Row>
