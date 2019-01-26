@@ -1,55 +1,25 @@
-module.exports = function(sequelize, Sequelize) {
- 
-    var User = sequelize.define('user', {
- 
-        id: {
-            autoIncrement: true,
-            primaryKey: true,
-            type: Sequelize.INTEGER
-        },
- 
-        firstname: {
-            type: Sequelize.STRING,
-            notEmpty: true
-        },
- 
-        lastname: {
-            type: Sequelize.STRING,
-            notEmpty: true
-        },
- 
-        username: {
-            type: Sequelize.TEXT
-        },
- 
-        about: {
-            type: Sequelize.TEXT
-        },
- 
-        email: {
-            type: Sequelize.STRING,
-            validate: {
-                isEmail: true
-            }
-        },
- 
-        password: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
- 
-        last_login: {
-            type: Sequelize.DATE
-        },
- 
-        status: {
-            type: Sequelize.ENUM('active', 'inactive'),
-            defaultValue: 'active'
-        }
- 
- 
-    });
- 
-    return User;
- 
-}
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const Schema = mongoose.Schema;
+
+
+const UserSchema = new Schema({
+//   firstName: { type: String, required: true },
+//   lastName: { type: String, required: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  isDeleted:  { type: Boolean, default: false }
+});
+
+
+UserSchema.methods.generateHash = (password) => {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
+};
+
+
+UserSchema.methods.validPassword = (password, storedPW) => {
+  return bcrypt.compareSync(password, storedPW);
+};
+
+
+module.exports = mongoose.model("User", UserSchema);

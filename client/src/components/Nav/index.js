@@ -17,6 +17,9 @@ function Nav() {
         <li class="nav-item">
           <a class="nav-link" href="/signin">Kitchen Sign in</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Kitchen Sign up</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Linkedins
