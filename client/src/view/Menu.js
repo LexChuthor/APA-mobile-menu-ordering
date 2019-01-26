@@ -106,7 +106,7 @@ class Books extends Component {
         <Row >
           <Col size="md-9 sm-12">
             <Wrapper className="wood">
-              <Row><h1>Please select from the menu options below</h1></Row>
+              <Row><h1 className="shopping-empty">Please select from the menu options below</h1></Row>
               <Wrapper>
                 {this.state.categories.map(category => (
                   <Category
