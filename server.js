@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express()
+const app = express();
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
@@ -7,6 +7,7 @@ const passport = require("passport")
 const session = require("express-session")
 var bodyParser = require('body-parser')
 var env = require('dotenv').load()
+const mysql= require("mysql")
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
+
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -26,7 +28,7 @@ app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
 
 app.get('signin', function (req, res) {
@@ -35,31 +37,41 @@ app.get('signin', function (req, res) {
 
 
 //Models
-var models = require("./app/models");
+var models = require("./models");
 
+//Sync Database
+// models.sequelize.sync().then(function() {
+ 
+//     console.log('Nice! Database looks fine')
+ 
+// }).catch(function(err) {
+ 
+//     console.log(err, "Something went wrong with the Database Update!")
+ 
+// });
 
 //Routes
-var authRoute = require('./app/routes/auth.js')(app, passport);
+var authRoute = require('./routes/api/auth')(app, passport);
 
 
 //load passport strategies
-require('./app/config/passport/passport.js')(passport, models.user);
+require('./config/passport/passport')(passport, models.user);
 
 // Route config -------------------------------------------/
-require("./app/routes/htmlRoutes")(app);
-require("./app/routes/apiRoutes")(app);
+// require("./app/routes/htmlRoutes")(app);
+// require("./app/routes/apiRoutes")(app);
 
 //Sync Database
-models.sequelize.sync().then(function () {
-    console.log('Connected to Database')
+// models.sequelize.sync().then(function () {
+//     console.log('Connected to Database')
 
-}).catch(function (err) {
-    console.log(err, "Something went wrong with the Database Update!")
-});
+// }).catch(function (err) {
+//     console.log(err, "Something went wrong with the Database Update!")
+// });
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/restaurantExample");
 
 // Start the API server
 app.listen(PORT, function() {

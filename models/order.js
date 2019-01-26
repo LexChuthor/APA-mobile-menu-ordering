@@ -7,6 +7,8 @@ const orderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Product"
   }],
+  price: {type: Number, required: true},
+  completed: {type: Boolean, default: false},
   date: { type: Date, default: Date.now }
 });
 
