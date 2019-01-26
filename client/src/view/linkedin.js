@@ -26,9 +26,7 @@ class Books extends Component {
               <h1>Contributors:</h1>
             </Jumbotron>
             <div class="list-group">
-               <a href="https://linkedin.com/in/alexander-esch-37b69a62" class="list-group-item list-group-item-action active">
-                 Alex Esch
-               </a>
+               <a href="https://linkedin.com/in/alexander-esch-37b69a62" class="list-group-item list-group-item-action active">Alex Esch</a>
                 <a href="https://www.linkedin.com/in/aosilvester/" class="list-group-item list-group-item-action">Alex Silvester</a>
                 <a href="https://www.linkedin.com/in/patrick-chu-90545514b/" class="list-group-item list-group-item-action">Patrick Chu</a>
             </div>
