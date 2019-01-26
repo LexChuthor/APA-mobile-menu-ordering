@@ -5,6 +5,7 @@ import Detail from "./view/Detail";
 // import NoMatch from "./view/NoMatch";
 // our navbar
 import Nav from "./components/Nav";
+import Logout from './components/Logout';
 // import Card from "./components/Card";
 import kitchen from "./view/kitchen";
 import linkedin from "./view/linkedin";
@@ -58,6 +59,7 @@ class App extends Component {
             <Route exact path="/linkedin" component={linkedin}/>
             <Route exact path="/signin" component={signin}/>
             <Route exact path="/signup" component={signup}/>
+            <Route exact path="/logout" component={Logout} />
           </Switch>
         </div>
       </Router>

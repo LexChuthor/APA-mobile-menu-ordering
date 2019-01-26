@@ -21,12 +21,12 @@ router
 
 // Matches with "/api/verify"
 router
-  .route("/api/verify")
+  .route("/verify")
   .post(loginController.verify);
 
 // Matches with "/api/logout"
 router
-  .route("/api/logout")
+  .route("/logout")
   .post(loginController.logout);
 
 // Matches with "/api/addEvent"
