@@ -33,6 +33,9 @@ function Nav() {
         <li className="nav-item">
           <a className="nav-link disabled" href="/">Hello Guest</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Kitchen Log Out</a>
+        </li>
       </ul>
     </div>
   </nav>
