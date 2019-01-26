@@ -25,7 +25,7 @@ function Nav() {
             Linkedins
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            {/* <a className="dropdown-item" href="#">Alex Esch</a> */}
+            <a className="dropdown-item" href="https://linkedin.com/in/alexander-esch-37b69a62">Alex Esch</a>
             <a className="dropdown-item" href="https://www.linkedin.com/in/patrick-chu-90545514b">Patrick Chu</a>
             <a className="dropdown-item" href="https://www.linkedin.com/in/aosilvester/">Alex Silvester</a>
           </div>
