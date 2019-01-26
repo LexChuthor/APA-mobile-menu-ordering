@@ -18,10 +18,6 @@ module.exports = {
       password
     } = body;
     let { email } = body;
-
-
-
-
     // if (!firstName) {
     //   return res.send({
     //     success: false,
