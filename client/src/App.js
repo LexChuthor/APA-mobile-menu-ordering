@@ -54,7 +54,6 @@ class App extends Component {
             <Route exact path="/linkedin" component={linkedin}/>
             <Route exact path="/signin" component={signin}/>
             <Route exact path="/signup" component={signup}/>
-            <Route exact path="/logout" component={Logout} />
           </Switch>
         </div>
       </Router>
