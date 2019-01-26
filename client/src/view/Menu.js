@@ -33,7 +33,7 @@ class Books extends Component {
     products: [],
     categories: [],
     order: [],
-    orderName: "default"
+    orderName: this.props.match.params.id
   };
 
   componentDidMount() {
@@ -105,7 +105,7 @@ class Books extends Component {
     let prices = [];
     let total = 0;
     currentOrder.map(item => {
-      prices.push(item.price);
+       return prices.push(item.price);
     });
     prices.forEach(price => {
       total += price;
@@ -121,6 +121,8 @@ class Books extends Component {
             <Wrapper className="wood">
               <Row><h1>Please select from the menu options below</h1></Row>
               <Wrapper>
+                {console.log(this.state.orderName)}
+                {console.log(this.props)}
                 {this.state.categories.map(category => (
                   <Category
                     key={category._id}
