@@ -17,8 +17,11 @@ function Nav() {
         <li className="nav-item">
           <a className="nav-link" href="/signin">Kitchen Sign in</a>
         </li>
+        <li className="nav-item">
+          <a className="nav-link" href="/signup">Kitchen Sign up</a>
+        </li>
         <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="http://www.linkedin.com/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Linkedins
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
