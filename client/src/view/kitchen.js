@@ -73,6 +73,7 @@ class Kitchen extends Component {
           <Col size="sm-12">
             {/*  Jumbotron */}
             <Wrapper>
+              {console.log(this.state.orders)}
               {this.state.orders.map((order, i) => (
                 order.completed === false &&
                 <OrderCard
