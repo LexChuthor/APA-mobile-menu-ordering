@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu from "./view/Menu";
-// import NoMatch from "./view/NoMatch";
-// our navbar
 import Nav from "./components/Nav";
-import Logout from './components/Logout';
-// import Card from "./components/Card";
 import kitchen from "./view/kitchen";
 import linkedin from "./view/linkedin";
 import signin from "./view/signin"
-import  signup from "./view/signup";
+import signup from "./view/signup";
 import "./view/Menu.css";
 import "./components/Nav/Nav.css";
 
@@ -58,7 +54,6 @@ class App extends Component {
             <Route exact path="/linkedin" component={linkedin}/>
             <Route exact path="/signin" component={signin}/>
             <Route exact path="/signup" component={signup}/>
-            <Route exact path="/logout" component={Logout} />
           </Switch>
         </div>
       </Router>

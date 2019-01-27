@@ -3,18 +3,19 @@ const app = express();
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
-const passport = require("passport")
-const session = require("express-session")
-var bodyParser = require('body-parser')
-// var env = require('dotenv').load()
-// const mysql= require("mysql")
 
-// Define middleware here
+var bodyParser = require('body-parser');
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+
+  // app.get('/^\/(?!api.*/', (req, res) => {
+  //   res.sendFile(path.join(__dirname, './client/public/index.html'));
+  // });
 }
 // Add routes, both API and view
 app.use(routes);
@@ -23,51 +24,6 @@ app.use(routes);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// For Passport
-app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-
-app.use(express.static("public"));
-
-
-app.get('signin', function (req, res) {
-    res.send('Welcome to Passport with Sequelize');
-});
-
-
-//Models
-var models = require("./models");
-
-// Sync Database
-// models.sequelize.sync().then(function() {
- 
-//     console.log('Nice! Database looks fine')
- 
-// }).catch(function(err) {
- 
-//     console.log(err, "Something went wrong with the Database Update!")
- 
-// });
-
-//Routes
-var authRoute = require('./routes/api/auth')(app, passport);
-
-
-//load passport strategies
-require('./config/passport/passport')(passport, models.user);
-
-// Route config -------------------------------------------/
-// require("./app/routes/htmlRoutes")(app);
-// require("./app/routes/apiRoutes")(app);
-
-//Sync Database
-// models.sequelize.sync().then(function () {
-//     console.log('Connected to Database')
-
-// }).catch(function (err) {
-//     console.log(err, "Something went wrong with the Database Update!")
-// });
 
 
 // Connect to the Mongo DB
