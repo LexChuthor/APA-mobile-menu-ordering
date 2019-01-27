@@ -1,5 +1,5 @@
 const db = require("../models");
-const User = require("../models/User")
+const User = require("../models/user")
 const UserSession = require("../models/UserSession")
 
 // Defining methods for the loginController
@@ -18,10 +18,6 @@ module.exports = {
       password
     } = body;
     let { email } = body;
-
-
-
-
     // if (!firstName) {
     //   return res.send({
     //     success: false,
@@ -50,7 +46,8 @@ module.exports = {
 
     console.log("we got to just before db.User.find")
     // checkExist: (req, res) => {
-    db.User.find({
+    db.User
+    .find({
       email: email
     }, (err, exists) => {
       if (err) {
