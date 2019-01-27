@@ -1,0 +1,30 @@
+.loginForm{
+    width: 100%;
+    /* background-color:black; */
+    text-align:center;
+
+}
+
+label{
+    size: 100px;
+    width:85px;
+    text-align:center;
+    width:100%;
+    max-width: 100px;
+}
+
+.signin{
+    margin: 10px;
+    /* text-align: center; */
+    /* margin-left: 50%; */
+    color: orange;   
+}
+
+.row{
+    /* background-color:orange; */
+    text-align: center;
+}
+
+.formRow{
+    background-color: orange;
+}
