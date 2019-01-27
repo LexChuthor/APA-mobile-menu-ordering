@@ -1,5 +1,5 @@
 const db = require("../models");
-const User = require("../models/User")
+const User = require("../models/user")
 const UserSession = require("../models/UserSession")
 
 // Defining methods for the loginController
