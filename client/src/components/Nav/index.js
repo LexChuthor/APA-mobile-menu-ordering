@@ -1,7 +1,16 @@
-import React from "react";
+import React, { Component } from 'react';
 
 
-function Nav() {
+class NavBar extends Component {
+  state = { isLoggedIn: false };
+
+  handleExit = event => {
+    event.preventDefault();
+    console.log("Back to Root");
+    window.location.assign('/');
+  };
+
+  render(){
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-light">
     <a className="navbar-brand" href="/">Mexicana Food App</a>
@@ -30,17 +39,19 @@ function Nav() {
             <a className="dropdown-item" href="https://www.linkedin.com/in/aosilvester/">Alex Silvester</a>
           </div>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a className="nav-link disabled" href="/">Hello Guest</a>
-        </li>
+        </li> */}
         <li class="nav-item">
-          <a class="nav-link" href="/logout">Kitchen Log Out</a>
+          <a class="nav-link" href="/" onClick={this.handleExit} >Kitchen Log Out</a>
         </li>
       </ul>
     </div>
   </nav>
   );
 }
+}
 
 
-export default Nav;
+
+export default NavBar;
