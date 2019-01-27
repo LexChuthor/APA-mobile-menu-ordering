@@ -3,3 +3,5 @@ const loginController = require("../../controllers/loginController");
 
 router.route("/")
     .post(loginController.signUp);
+
+module.exports = router;
