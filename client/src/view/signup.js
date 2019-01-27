@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import cards from "./cards.json";
 import Stretch from "../components/Stretch/Stretch";
+import "./Menu.css"
 
 
 class Login extends Component {
@@ -61,7 +62,8 @@ class Login extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="sm-12">
+        <Col size="md-4 sm-3 "></Col>
+          <Col size="md-6 sm-6 ">
             {/* <form id="signup" name="signup"  action="/kitchen">
                 <Row>Kitchen Sign In </Row>
                 <Row>
@@ -82,11 +84,11 @@ class Login extends Component {
               <form id="signup" name="signup" action="/kitchen">
                 <Row>
                   {" "}
-                  <h1>Kitchen Sign Up</h1>{" "}
+                  <h1 className="klog">Kitchen Sign Up</h1>{" "}
                 </Row>
 
                 <Row>
-                  <label className="firstName" for="login_fname">
+                  <label className="firstName login_password form1" for="login_fname">
                     First Name
                   </label>
                   <input
@@ -98,7 +100,7 @@ class Login extends Component {
                   />
                 </Row>
                 <Row>
-                  <label className="lastName" for="login_lname">
+                  <label className="lastName login_password form1" for="login_lname">
                     Last Name
                   </label>
                   <input
@@ -110,7 +112,7 @@ class Login extends Component {
                   />
                 </Row>
                 <Row>
-                  <label className="email" for="login_email">
+                  <label className="email login_password form1" for="login_email">
                     Email
                   </label>
                   <input
@@ -122,7 +124,7 @@ class Login extends Component {
                   />
                 </Row>
                 <Row>
-                  <label className="password" for="login_Password">
+                  <label className="password login_password form1" for="login_Password">
                     Password
                   </label>
                   <input
@@ -145,6 +147,8 @@ class Login extends Component {
             </div>
             <Stretch />
           </Col>
+          <Col size="md-2 sm-3 "></Col>
+
         </Row>
       </Container>
     );
