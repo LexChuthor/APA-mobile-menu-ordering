@@ -46,7 +46,7 @@ module.exports = {
 
     console.log("we got to just before db.User.find")
     // checkExist: (req, res) => {
-    db.User.find({
+    db.user.find({
       email: email
     }, (err, exists) => {
       if (err) {
@@ -65,7 +65,7 @@ module.exports = {
     });
 
 
-    const newUser = new User();
+    const newUser = new user();
     newUser.email = email;
     // newUser.firstName = firstName;
     // newUser.lastName = lastName;
@@ -117,7 +117,7 @@ module.exports = {
     email = email.toLowerCase();
 
 
-    User.find({
+    db.user.find({
       email: email
       }, (err, users) => {
       console.log("Found user = " + users);

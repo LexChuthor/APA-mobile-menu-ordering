@@ -2,6 +2,8 @@ const router = require("express").Router();
 const productRoutes = require("./product");
 const categoryRoutes = require("./category");
 const orderRoutes = require("./order");
+const signupRoutes = require("./signup");
+const signinRoutes = require("./signin");
 
 const loginController = require("../../controllers/loginController");
 
@@ -9,17 +11,10 @@ const loginController = require("../../controllers/loginController");
 router.use("/product", productRoutes);
 router.use("/category", categoryRoutes);
 router.use("/order", orderRoutes);
+router.use("/signup", signupRoutes);
+router.use("/signin", signinRoutes);
 
-router
-  .route("/signup")
-  .post(loginController.signUp);
 
-// Matches with "/api/signin"
-router
-  .route("/signin") 
-  .post(loginController.signIn);
-
-// Matches with "/api/verify"
 router
   .route("/verify")
   .post(loginController.verify);
