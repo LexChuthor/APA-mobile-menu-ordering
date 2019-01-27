@@ -4,7 +4,7 @@ import "./Card.css";
 const Card = props => (
   <div className="card"
   onClick={() => props.handleMenuClick(props.id)}>
-    <span>{props.name}:</span><span>{props.description}</span>
+    {props.name}:{props.description}
     <div className="img-container">
       <img alt={props.name} src={props.image} />
     </div>
