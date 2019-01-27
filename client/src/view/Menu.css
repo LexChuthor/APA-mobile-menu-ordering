@@ -16,3 +16,27 @@
 .jumbotron {
     background-image: url("https://i2.wp.com/thomastile-carpet.com/wp-content/uploads/2018/03/RowlockPlus_LW007_Breckenridge-1.jpg");
 }
+.login_email {
+    padding-right: 28px;
+    color: bisque;
+    background-image: url("https://i2.wp.com/thomastile-carpet.com/wp-content/uploads/2018/03/RowlockPlus_LW007_Breckenridge-1.jpg");
+    border:0;
+    margin-bottom:0rem;
+    text-align:center;
+}
+.login_password {
+    color: bisque;
+    background-image: url("https://i2.wp.com/thomastile-carpet.com/wp-content/uploads/2018/03/RowlockPlus_LW007_Breckenridge-1.jpg");
+    border:0;
+    margin-bottom:0rem;
+    text-align:center;
+}
+.klog {
+    color: bisque;
+    background-image: url("https://i2.wp.com/thomastile-carpet.com/wp-content/uploads/2018/03/RowlockPlus_LW007_Breckenridge-1.jpg");
+    border:0;
+    margin-bottom:0rem;
+    text-align:center;
+    padding-right:22px;
+    text-align:center;
+}

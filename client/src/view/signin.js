@@ -6,6 +6,7 @@ import cards from "./cards.json";
 import kitchen from "../components/Kitchen";
 import API from "../utils/API";
 import Stretch from "../components/Stretch/Stretch";
+import "./Menu.css";
 
 class Login extends Component {
   state = {
@@ -57,11 +58,14 @@ class Login extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="sm-12">
+          <Col size="md-4 sm-3 "></Col>
+          <Col size="md-6 sm-6 ">
             <div id="loginForm" className="loginForm">
               <form id="signup" name="signup" action="/kitchen">
                 <Row>
-                  <h1>Kitchen Log In</h1>
+                  <div>
+                  <h1 className="klog">Kitchen Log In</h1>
+                  </div>
                 </Row>
                 <Row>
                   <label className="login_email" for="login_email">
@@ -95,6 +99,7 @@ class Login extends Component {
               </form>
             </div>
           </Col>
+          <Col size="md-2 sm-3 "></Col>
         </Row>
 
         <Stretch />
