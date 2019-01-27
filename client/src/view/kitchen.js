@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
 import { Col, Row, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
 import Wrapper from "../components/Wrapper";
 import OrderCard from "../components/OrderCard";
 import API from "../utils/API";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import OrderCompleteBtn from "../components/OrderCompleteBtn";
-// import QRCode from "react-qr-code";
+
 
 class Kitchen extends Component {
   state = {
