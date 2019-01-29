@@ -3,9 +3,9 @@ import "./SubmitOrderBtn.css";
 
 const SubmitOrderBtn = (props) => {
     return (
-        <span className="submit-order" onClick={props.handleClick} role="button"> 
+        <button className="submit-order" onClick={props.handleClick}> 
             Submit Order
-        </span>
+        </button>
     )
 }
 
