@@ -11,7 +11,7 @@ import Category from "../components/Category";
 import { List, ListItem } from "../components/List";
 import TotalBar from "../components/TotalBar";
 import SubmitOrderBtn from "../components/SubmitOrderBtn";
-
+import DeleteBtn from "../components/DeleteBtn";
 import "./Menu.css"
 import Stretchmini from "../components/Stretchmini/Stretchmini";
 
@@ -86,7 +86,16 @@ class Books extends Component {
     currentOrder.push(product[0]);
     this.setState({ order: currentOrder });
   }
-
+  removeOrderItem = i => {
+    const currentOrder = this.state.order;
+    const newOrder = [];
+    delete currentOrder[i];
+    currentOrder.forEach(order =>{
+       return newOrder.push(order);
+    })
+    
+    this.setState({order: newOrder});
+  }
   calculateTotal = () => {
     const currentOrder = this.state.order;
     let prices = [];
@@ -137,6 +146,7 @@ class Books extends Component {
                   key={i}
                   name={item.name}
                   price={item.price}>
+                  <DeleteBtn onClick={() => this.removeOrderItem(i)}/>
                 </ListItem>
               ))}
               <TotalBar

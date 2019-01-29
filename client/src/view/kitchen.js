@@ -20,6 +20,11 @@ class Kitchen extends Component {
 
   componentDidMount = () => {
     this.loadOrders();
+    this.interval = setInterval(this.loadOrders, 5000);
+  }
+
+  componentWillUnmount = () => {
+    clearInterval(this.interval);
   }
   loadOrders = () => {
     API.getOrders()
